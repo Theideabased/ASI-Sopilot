@@ -1,0 +1,33 @@
+INTRODUCTION
+95% of potential crypto users are locked out of solana DeFi because it's too complex.
+
+Hi, my name is Seyi I built Solpilot multiagent. The world's first truly conversational solana copilot powered 
+Nosana and Mastra Agent.
+
+Imagine managing entire solana portfolio, transfering token, executing swaps, tracking new tokens, and staying 
+updated on market trends all through simple conversations. "No techincal knowledge required"
+
+WHAT SOPILOT DOES
+Let me show you how it works 
+1. connect to your wallet 
+2. portfolio Balance "What's my SOL balance" 
+3. pump.fun Token tracking "show me the latest pump.fun tokens" 
+4. staking 
+5. Send SOL to a wallet 
+ 
+ TOOLS AND TECHNOLOGY
+ We use mastrra agent for our multi-agnet framework which combine 4 specialize agent.
+ 1. Solpilot : Handles all blockchain transfer 
+ 2. Sonia: You pump.fun adn DEX expert with Bitquery integration
+ 3. Zerion: Track portfolios across 25+ chains and 8,000 DeFi protocols
+ 4. Venice: Curates news with real-time web search using Llama 3.3 
+
+ we integrated 6 API with 25 tools
+
+ FUTURE OF SOLPILOT 
+ 1.Telegram bot : chat with solpilot anywhere 
+ 2. Developer API : Let others build on our AI agents.
+ 3. Mobile APP
+ 4. Multi-Chain expansion to other blockchain 
+
+ Join us in transforming the future of blockchain from more complexity to radical simplicity
