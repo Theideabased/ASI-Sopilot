@@ -34,13 +34,34 @@ export async function transferFunds(
         );
         return;
       }
+      // Ensure token is an object, not a string
+      if (typeof transactionData.token === 'string') {
+        addToChat(
+          createChatMessage({
+            sender: "ai",
+            text: "❌ Failed to fetch token metadata.",
+            type: "error",
+            intent: intent,
+          })
+        );
+        return;
+      }
       addToChat(
         createChatMessage({
           sender: "ai",
           text: ` You want to send  ${transactionData.amount} ${transactionData.token.symbol} to ${transactionData.receiver}. Are you confirming this transaction ?`,
           type: "send_token",
           intent: intent,
-          send: transactionData,
+          send: {
+            token: {
+              tokenType: transactionData.token.tokenType,
+              address: transactionData.token.address,
+              decimals: transactionData.token.decimals,
+              denom: transactionData.token.denom,
+            },
+            receiver: transactionData.receiver,
+            amount: transactionData.amount,
+          },
         })
       );
       return;
