@@ -3,6 +3,8 @@
 ![tag:innovationlab](https://img.shields.io/badge/innovationlab-3D8BD3)
 ![tag:hackathon](https://img.shields.io/badge/hackathon-5F43F1)
 
+![Live demo](https://img.shields.io/badge/demo-live-brightgreen)
+
 **Powered by Fetch.ai uAgents & ASI Alliance**
 
 An autonomous multi-agent system that simplifies Solana DeFi operations through natural language. Three specialized agents collaborate in real-time to analyze tokens, execute trades, and provide market insights—all accessible via ASI:One.
@@ -205,107 +207,31 @@ agents/
 
 ## 📄 License
 
-### License
+See the project `LICENSE` file for full terms.
 
-- Node.js 18+ and npm/yarn/pnpm
-- Supabase account
-- OpenRouter API key (for AI functionality)
-- Basic knowledge of blockchain concepts
-
-## Getting Started
-
-### 1. Clone the repository
+## Run locally
 
 ```bash
-git clone https://github.com/Jecta-ai/jecta-app
-cd jecta-app
-```
-
-### 2. Install dependencies
-
-```bash
+git clone https://github.com/Theideabased/ASI-Sopilot.git
+cd ASI-Sopilot
+# Web UI (optional)
 npm install
-# or
-yarn install
-# or
-pnpm install
-```
-
-### 3. Set up environment variables
-
-Copy the `.env.example` file to `.env.local` and fill in the required values:
-
-```bash
-cp .env.example .env.local
-```
-
-Required environment variables:
-
-- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
-- `SUPABASE_JWT_SECRET`: Secret key for JWT token generation
-- `OPENROUTER_API_KEY`: API key for OpenRouter
-- `OPENROUTER_BASE_URL`: Base URL for OpenRouter API
-- `MODEL`: AI model to use
-- `BEARER_TOKEN`: Bearer token for API authentication
-- `MAX_POSTS`: Maximum number of posts to retrieve
-
-### 4. Database Setup
-
-You need to set up the following tables in your Supabase PostgreSQL database:
-
-#### Users Table
-
-```sql
-CREATE TABLE users (
-  id UUID PRIMARY KEY,
-  wallet_address TEXT UNIQUE NOT NULL,
-  nonce UUID
-);
-```
-
-#### Chats Table
-
-```sql
-CREATE TABLE chats (
-  id UUID PRIMARY KEY,
-  ai_id UUID,
-  user_id UUID REFERENCES users(id),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  title TEXT
-);
-```
-
-#### Messages Table
-
-```sql
-CREATE TABLE messages (
-  id UUID PRIMARY KEY,
-  chat_id UUID REFERENCES chats(id),
-  sender_id UUID REFERENCES users(id),
-  message JSONB NOT NULL,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-```
-
-### 5. Run the development server
-
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
+# Agents (uAgents)
+cd agents
+pip install -r requirements.txt
+cp .env.example .env
+./run_agents.sh
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+Set required environment variables in `agents/.env` (OpenRouter API key, agent seeds). See `agents/.env.example`.
 
-## Deployment
+## Live demo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The production frontend is deployed on Vercel: https://solpilot-ai.vercel.app/
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For deployment, Vercel or any Next.js-compatible host works; the agents should be deployed separately (see `agents/`).
 
 ## Project Structure
 
